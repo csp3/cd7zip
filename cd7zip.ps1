@@ -1,3 +1,8 @@
+<#
+uso:
+.\cd7zip.ps1 
+#>
+
 Clear-Host
 Write-Host "----7zip----" 
 
