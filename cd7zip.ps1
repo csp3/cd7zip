@@ -6,6 +6,21 @@ uso:
 Clear-Host
 Write-Host "----7zip----" 
 
+function nomArchivo {
+    param (
+        $texto
+    )
+    
+    $t = $texto.Split(".")
+    $n = "" 
+    for ($i = 0; $i -lt $t.Length - 1; $i++) 
+    {
+        $n += $t[$i]     
+    }
+
+    return $n
+}
+
 $rutaactual = (Get-Location).Path 
 $ruta7zip = "C:\Program Files\7-Zip\7z.exe";
 $r = 0
@@ -56,7 +71,7 @@ elseif ($r -eq 1) #Comprimir
     if ($r -ne 0) 
     {
         $nombrearchivo = $rutaactual +  "\" + $nom[$r-1]; 
-        $nombrearchivo7zip = $rutaactual + "\" + ".7z"; 
+        $nombrearchivo7zip = $rutaactual + "\" + (nomArchivo $nom[$r-1]) +".7z"; 
     
         Set-Alias 7zip $ruta7zip 
         7zip a -mx=9 $nombrearchivo7zip $nombrearchivo 
